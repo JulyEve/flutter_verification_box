@@ -1,8 +1,6 @@
 library flutter_verification_box;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_verification_box/src/verification_box_item.dart';
 
 ///
@@ -10,7 +8,8 @@ import 'package:flutter_verification_box/src/verification_box_item.dart';
 ///
 class VerificationBox extends StatefulWidget {
   VerificationBox(
-      {this.count = 6,
+      {Key? key,
+      this.count = 6,
       this.itemWidget = 45,
       this.onSubmitted,
       this.type = VerificationBoxItemType.box,
@@ -26,7 +25,8 @@ class VerificationBox extends StatefulWidget {
       this.cursorWidth = 2,
       this.cursorColor,
       this.cursorIndent = 10,
-      this.cursorEndIndent = 10});
+      this.cursorEndIndent = 10})
+      : super(key: key);
 
   ///
   /// 几位验证码，一般6位，还有4位的
@@ -155,12 +155,9 @@ class _VerificationBox extends State<VerificationBox> {
                   decoration: widget.decoration,
                   borderRadius: widget.borderRadius,
                   borderWidth: widget.borderWidth,
-                  borderColor: (_controller.text.length == index
-                          ? widget.focusBorderColor
-                          : widget.borderColor) ??
+                  borderColor: (_controller.text.length == index ? widget.focusBorderColor : widget.borderColor) ??
                       widget.borderColor,
-                  showCursor:
-                      widget.showCursor && _controller.text.length == index,
+                  showCursor: widget.showCursor && _controller.text.length == index,
                   cursorColor: widget.cursorColor,
                   cursorWidth: widget.cursorWidth,
                   cursorIndent: widget.cursorIndent,
@@ -183,12 +180,9 @@ class _VerificationBox extends State<VerificationBox> {
       controller: _controller,
       focusNode: _focusNode,
       decoration: InputDecoration(
-        border: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent)),
-        enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent)),
-        focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent)),
+        border: UnderlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
+        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
+        focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
       ),
       cursorWidth: 0,
       autofocus: widget.autoFocus,
