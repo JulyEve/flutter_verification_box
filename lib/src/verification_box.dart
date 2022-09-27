@@ -190,6 +190,7 @@ class _VerificationBox extends State<VerificationBox> {
         // WhitelistingTextInputFormatter(RegExp("[0-9]")),
       ],
       maxLength: widget.count,
+      enableInteractiveSelection: false,
       buildCounter: (
         BuildContext context, {
         required int currentLength,
